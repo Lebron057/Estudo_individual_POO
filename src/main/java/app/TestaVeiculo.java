@@ -1,31 +1,33 @@
 package app;
 
 public class TestaVeiculo{
+
+    public static void printLine(int count) {
+        System.out.println("");
+        for (int i = 0; i < count; i++) {
+            System.out.print("=");
+        }
+        System.out.println("\n");
+    }
+
     public static void main(String[] args){
-        Carro c1 = new Carro();
-        Moto m1 = new Moto();
+        Veiculo[] frota = new Veiculo[3];
+        frota[0] = new Carro("Ferrari", "SF90", 2024, 2);
+        frota[1] = new Moto("Honda", "CB-300", 2016, 300);
+        frota[2] = new Caminhao("Mercedez", "VUC", 2020, 2);
 
-        c1.setMarca("Ferrari");
-        c1.setModelo("SF90");
-        c1.setAno(2024);
-        c1.setNumeroDePortas(2);
-
-        m1.setMarca("Honda");
-        m1.setModelo("CB-300");
-        m1.setAno(2016);
-        m1.setCilindradas(300);
-
-        System.out.println("--- Detalhes do Carro ---");
-        System.out.println("Marca: " + c1.getMarca());
-        System.out.println("Modelo: " + c1.getModelo());
-        System.out.println("Ano: " + c1.getAno());
-        System.out.println("Numero de portas: " + c1.getNumeroDePortas() + "\n");
-        
-        System.out.println("\n--- Detalhes do Moto ---");
-        System.out.println("Marca: " + m1.getMarca());
-        System.out.println("Modelo: " + m1.getModelo());
-        System.out.println("Ano: " + m1.getAno());
-        System.out.println("Cilindradas: " + m1.getCilindradas());
-
+        for(Veiculo veiculo : frota){
+            veiculo.exibirDetalhes();
+            System.out.println("Imposto do veiculo: " + veiculo.calcularImposto());
+            if(veiculo instanceof Carro){ // "instanceof" verifica se a variavel veiculo é da classe Carro
+                Carro carroEspecifico = (Carro) veiculo; // Isso é o cast
+                System.out.println("Este carro tem " + carroEspecifico.getNumeroDePortas() + " portas.");
+            }
+            if(veiculo instanceof Caminhao){
+                Caminhao caminhaoEspecifico = (Caminhao) veiculo;
+                System.out.println("Este caminhão tem " + caminhaoEspecifico.getNumerodeEixos() + " eixos.");
+            }
+            printLine(40);
+        }
     }
 }
