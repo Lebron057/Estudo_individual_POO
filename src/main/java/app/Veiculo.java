@@ -1,9 +1,9 @@
 package app;
 
 public abstract class Veiculo {
-    private String marca;
-    private String modelo;
-    private int ano;
+    protected String marca;
+    protected String modelo;
+    protected int ano;
 
     public void setMarca(String marca) {
         this.marca = marca;
@@ -30,6 +30,19 @@ public abstract class Veiculo {
         System.out.println("Marca: " + this.getMarca());
         System.out.println("Modelo: " + this.getModelo());
         System.out.println("Ano: " + this.getAno());
+    }
+
+    // A palavra "final" aqui proíbe que qualquer subclasse (Carro, Moto, etc.)
+    // possa criar um método com o mesmo nome "getDescricaoCompleta".
+    public final String getDescricaoCompleta(){
+
+        // Usamos 'this' para nos referirmos aos atributos do próprio objeto.
+        return "Veiculo: " + this.marca + " " + this.modelo + " (" + this.ano + ")";
+        }
+
+    @Override
+    public String toString(){
+        return "Veiculo: " + this.marca + " " + this.modelo + " (" + this.ano + ")";
     }
 
     public Veiculo(String marca, String modelo, int ano){

@@ -12,13 +12,22 @@ public class Carro extends Veiculo {
 
     public void exibirDetalhes(){
         System.out.println("--- Detalhes do Carro ---");
-        super.exibirDetalhes();
+        System.out.println("Marca: " + this.marca);
+        System.out.println("Modelo: " + this.modelo);
+        System.out.println("Ano: " + this.ano);
         System.out.println("Numero de portas: " + this.getNumeroDePortas());
     }
 
     public Carro(String marca, String modelo, int ano, int numeroDePortas){
         super(marca, modelo, ano);
         this.setNumeroDePortas(numeroDePortas);
+    }
+
+    // método construtor com valor de portas fixo
+    public Carro(String marca, String modelo, int ano){
+        // A chamada 'this()' chama o outro construtor desta MESMA classe
+        // Deve ser sempre a primeira linha.
+        this(marca, modelo, ano, 4);
     }
 
     @Override
